@@ -5,7 +5,7 @@
 #define ENABLE 1
 #define DISABLE 0
 #define MAX_TIMERS 10
-#define uSEC_BASE 1000000 //1000000 per second
+#define uSEC_BASE 1000 //1000000 per second, microseconds
 
 typedef struct timer{
 	unsigned int counter;
