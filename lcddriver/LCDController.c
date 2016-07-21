@@ -49,6 +49,12 @@ void sendText(char *s)
    sendByte(*s++);
 }
 
+void goToXY(unsigned char x, unsigned char y)
+{
+  unsigned char firstCharAdr[]={0x80,0xC0};
+  sendByte(firstCharAdr[y-1] + x - 1);
+}
+
 //========== Modos de operacion ================
 
 void setCmdMode(void) 
