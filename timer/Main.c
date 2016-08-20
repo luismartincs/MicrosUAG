@@ -1,30 +1,36 @@
 #include <stdio.h>
 #include "Timer.h"
 
+unsigned char T1;
+unsigned char T2;
+unsigned char T3;
+
 void tarea1()
 {
-    printf("%s\n","Tarea 1");
-    enable(1,0);
-
-    setTimer(1,2,2,1);
-
-    enable(1,1);
+	printf("Ejecutando tarea 1\n");
 }
 
 void tarea2()
 {
-    printf("Tarea 2, timer 1 count: %i %i\n",getTimerCount(1),getTimerStatus(1));
+	printf("Ejecutando tarea 2\n");
+}
+
+void tarea3()
+{
+	printf("Ejecutando tarea 3\n");
+	enable(T1,0);
 }
 
 
 void init(){
 
-	unsigned char T1 = getTimer(10,10,1);
-	freeTimer(T1);
-	unsigned char T2 = getTimer(1,1,1);
+	T1 = getTimer(250,250,1);
+	T2 = getTimer(1000,1000,1);
+	T3 = getTimer(5000,5000,0);
 
 	setCallBack(T1,&tarea1);
 	setCallBack(T2,&tarea2);
+	setCallBack(T3,&tarea3);
 
 	Timer t2Copy = getTimerValues(T1);
 
