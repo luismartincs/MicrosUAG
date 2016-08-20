@@ -15,12 +15,15 @@ typedef struct timer{
 } Timer;
 
 
+
+Timer getTimerValues(unsigned char timerId);
+
 void startTimers();
-unsigned char getTimer(unsigned int counter, unsigned int reload, unsigned char repeat);
 void setTimer(unsigned char timerId,unsigned int counter, unsigned int reload, unsigned char repeat);
 void setCallBack(unsigned char timer,void(*callback)());
-Timer getTimerValues(unsigned char timerId);
-unsigned int getTimerCount(unsigned char timerId);
 void enable(unsigned char timerId,unsigned char status);
-unsigned char getTimerStatus(unsigned char timerId);
 void freeTimer(unsigned char timerId);
+
+unsigned char getTimer(unsigned int counter, unsigned int reload, unsigned char repeat);
+unsigned int getTimerCount(unsigned char timerId);
+unsigned char getTimerStatus(unsigned char timerId);
