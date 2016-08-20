@@ -56,6 +56,13 @@ void lcd_text(char *s)
    lcd_byte(*s++);
  }
 
+void lcd_gotoxy(unsigned char x, unsigned char y)
+{
+  unsigned char firstCharAdr[]={0x80,0xC0};
+  lcd_byte(firstCharAdr[y-1] + x - 1);
+}
+
+
 void lcd_init()
 {
    wiringPiSetup() ; // use BCIM numbering
@@ -82,10 +89,10 @@ int main (int argc, char *argv [])
   lcd_init();
   
   SetChrMode(); 
-  if (argc>1) 
-     lcd_text(argv[1]);
-  else 
-     lcd_text("hello world!");
-    
+  lcd_text("hello world!");
+  SetCmdMode();
+  lcd_gotoxy(1,2);
+  SetChrMode();
+  lcd_text("Luis");
   return 0 ;
 }
