@@ -7,7 +7,7 @@ unsigned char timersEnable[MAX_TIMERS];
 unsigned char freeTimers[MAX_TIMERS];
 unsigned char usedTimers = 0;
 
-//===========================================
+//=======================================================================================================
 
 void startTimers(){
 	int i = 0;
@@ -45,6 +45,8 @@ void startTimers(){
 
 }
 
+//=======================================================================================================
+
 unsigned char getTimer(unsigned int counter, unsigned int reload, unsigned char repeat){
 
 	unsigned char i = 0;
@@ -70,6 +72,8 @@ unsigned char getTimer(unsigned int counter, unsigned int reload, unsigned char 
 	return 0;
 }
 
+//=======================================================================================================
+
 void setTimer(unsigned char timerId,unsigned int counter, unsigned int reload, unsigned char repeat){
 
 	timerId--;
@@ -79,9 +83,13 @@ void setTimer(unsigned char timerId,unsigned int counter, unsigned int reload, u
 
 }
 
+//=======================================================================================================
+
 void setCallBack(unsigned char timer,void(*callback)()){
 	timers[timer-1].callback = callback;
 }
+
+//=======================================================================================================
 
 Timer getTimerValues(unsigned char timerId){
 	timerId--;
@@ -92,19 +100,27 @@ Timer getTimerValues(unsigned char timerId){
 	return timerCopy;
 }
 
+//=======================================================================================================
+
 unsigned int getTimerCount(unsigned char timerId){
 	timerId--;
 	return timers[timerId].counter;
 }
+
+//=======================================================================================================
 
 void enable(unsigned char timerId,unsigned char status){
 	timerId--;
 	timersEnable[timerId] = status;
 }
 
+//=======================================================================================================
+
 unsigned char getTimerStatus(unsigned char timerId){
 	return timersEnable[--timerId];
 }
+
+//=======================================================================================================
 
 void freeTimer(unsigned char timerId){
 	timerId--;
