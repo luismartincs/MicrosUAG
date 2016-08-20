@@ -10,15 +10,15 @@ unsigned char usedTimers = 0;
 //=======================================================================================================
 
 void startTimers(){
-	int i = 0;
+	unsigned char i = 0;
 
 	while(1){
 
 		for (i = 0; i < MAX_TIMERS; ++i)
 		{
-			if(timersEnable[i] == ENABLE){
+			if(timersEnable[i] == ENABLE){ // Si el timer esta activo
 				
-				timers[i].counter = timers[i].counter - 1;
+				timers[i].counter = --timers[i].counter;
 
 				if(timers[i].counter == 0){
 					
@@ -37,7 +37,8 @@ void startTimers(){
 					}
 
 				}
-			}
+
+			} // Fin si timer activo
 		}
 
 		usleep(uSEC_BASE);
